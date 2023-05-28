@@ -1,0 +1,111 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; 
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 2.4rem;
+    margin: 0;
+    padding: 1.4rem;
+}
+
+.container {
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    background-color: #343a40;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.body {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    display: grid;
+}
+
+/* Carta */
+.card {
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Formulario de registro */
+
+.form {
+    width: 200px;
+}
+
+.form-input {
+    margin-bottom: 0.5rem;
+    width: 100%;
+    border: 1px solid #ced4da;
+    background-color: #f7f7f9;  
+    line-height: 1.5;
+    color: #55595c;
+    padding: 1rem;
+    cursor: text;
+    transition: box-shadow .15s ease-in-out;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.button {
+    background-color: rgb(17, 17, 17);
+    width: 100%;
+    border: none;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    transition: background-color .10s ease-in-out;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: black;
+}
+
+textarea {
+    resize: vertical;
+    overflow-x: hidden;
+}
+
+/* Tabla */
+.table {
+    width: 100%;
+    font-size: 1.4rem;
+}
+
+.table-head {
+    font-weight: bold;
+}
+
+.table-body{
+    font-weight: normal;
+}
+
+.table-row {
+    display: flex;
+    justify-content: space-between;
+}
