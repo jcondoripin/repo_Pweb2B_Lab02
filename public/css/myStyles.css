@@ -7,6 +7,10 @@ html {
     box-sizing: inherit;
 }
 
+* {
+    font-family: 'Nunito Sans', 'Open Sans', sans-serif;
+}
+
 body {
     margin: 0;
     font-size: 1.6rem;
@@ -14,14 +18,13 @@ body {
 }
 
 h1 {
-    font-size: 2.4rem;
+    font-size: 2rem;
     margin: 0;
     padding: 1.4rem;
 }
 
 .container {
     margin: 0 auto;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .header {
@@ -38,6 +41,7 @@ h1 {
 
 .content {
     display: grid;
+    width: 250px;
 }
 
 /* Carta */
@@ -48,10 +52,6 @@ h1 {
 }
 
 /* Formulario de registro */
-
-.form {
-    width: 200px;
-}
 
 .form-input {
     margin-bottom: 0.5rem;
@@ -72,7 +72,7 @@ h1 {
 }
 
 .button {
-    background-color: rgb(17, 17, 17);
+    background-color: rgba(10, 10, 10, 0.9);
     width: 100%;
     border: none;
     color: white;
