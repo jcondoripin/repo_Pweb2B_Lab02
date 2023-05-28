@@ -94,8 +94,15 @@ textarea {
 /* Tabla */
 .table {
     width: 100%;
-    margin-top: 2rem;
     font-size: 1.4rem;
+}
+
+.table-head {
+    font-weight: bold;
+}
+
+.table-body{
+    font-weight: normal;
 }
 
 .table-row {
