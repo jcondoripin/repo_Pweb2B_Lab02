@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md to HTML with AJAX</title>
+</head>
+<body>
+    <div>
+        <div>
+            <!-- Aquí el formulario para crear nuevos md -->
+            <form> 
+                <div>
+                    <label for="title">Titulo</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div>
+                    <label for="content">Contenido</label>
+                    <textarea name="content" placeholder="Contenido" id="content"></textarea>
+                </div>
+            </form>
+            <button id="bCrear" onclick="crearMd()">Nuevo archivo</button>
+
+            <!-- Aquí la lista de archivos creados -->
+            <table>
+                <thead>
+                    <td>
+                        <td>Titulo</td>
+                        <td>Acciones</td>
+                    </td>
+                </thead>
+                <tbody id="listMd">
+                    
+                </tbody>
+            </table>
+        </div>
+        <div id="result">
+            <!-- Aquí la vista de md a html -->
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
