@@ -56,6 +56,29 @@ h1 {
     line-height: 1.5;
     color: #55595c;
     padding: 1rem;
+    cursor: text;
+    transition: box-shadow .15s ease-in-out;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.button {
+    background-color: rgb(17, 17, 17);
+    width: 100%;
+    border: none;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    transition: background-color .10s ease-in-out;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: black;
 }
 
 textarea {
