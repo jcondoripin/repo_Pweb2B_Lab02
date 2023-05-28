@@ -25,7 +25,40 @@ h1 {
 }
 
 .header {
-    background-color: rgb(40, 40, 40);
+    background-color: #343a40;
     color: whitesmoke;
     text-align: center;
+}
+
+.content {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* Carta */
+.card {
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 2rem;
+}
+
+/* Formulario de registro */
+
+.form {
+    width: 200px;
+}
+
+.form-input {
+    margin-bottom: 0.5rem;
+    width: 100%;
+    border: 1px solid #ced4da;
+    background-color: #f7f7f9;  
+    line-height: 1.5;
+    color: #55595c;
+    padding: 1rem;
+}
+
+textarea {
+    resize: vertical;
+    overflow-x: hidden;
 }
