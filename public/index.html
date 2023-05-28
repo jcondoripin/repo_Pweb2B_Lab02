@@ -12,30 +12,33 @@
         <header class="header">
             <h1>Markdown to HTML with AJAX</h1>
         </header>
-        <div class="content">
-            <div class="card">
-                <!-- Aquí el formulario para crear nuevos md -->
-                <form class="form"> 
-                    <input class="form-input" type="text" name="title" id="title" placeholder="Titulo">
-                    <textarea  class="form-input form-input__area" name="content" placeholder="Contenido" id="content"></textarea>
-                </form>
-
-                <button class="button" id="bCrear" onclick="">Nuevo archivo</button>
-    
-                <!-- Aquí la lista de archivos creados -->
-                <table>
-                    <thead>
-                        <td>
-                            <td>Titulo</td>
-                            <td>Acciones</td>
-                        </td>
-                    </thead>
-                    <tbody id="listMd">
-                        
-                    </tbody>
-                </table>
-            </div> <!-- /card -->
-
+        <div class="body">
+            <div class="content">
+                <div class="card">
+                    <!-- Aquí el formulario para crear nuevos md -->
+                    <form class="form"> 
+                        <input class="form-input" type="text" name="title" id="title" placeholder="Titulo">
+                        <textarea  class="form-input form-input__area" name="content" placeholder="Contenido" id="content"></textarea>
+                    </form>
+                    
+                    <button class="button" id="bCrear" onclick="">Nuevo archivo</button>
+        
+                </div> <!-- /card -->
+                <div class="card">
+                    <!-- Aquí la lista de archivos creados -->
+                    <table class="table">
+                        <thead class="table-head">
+                            <tr class="table-row">
+                                <td>Titulo</td>
+                                <td>Acciones</td>
+                            </tr>
+                        </thead>
+                        <tbody id="listMd" class="table-body">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <div class="vista">
                 <div id="result">
                     <!-- Aquí la vista de md a html -->

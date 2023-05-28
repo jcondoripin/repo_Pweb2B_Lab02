@@ -30,16 +30,21 @@ h1 {
     text-align: center;
 }
 
-.content {
+.body {
     margin-top: 2rem;
     display: flex;
     justify-content: center;
+}
+
+.content {
+    display: grid;
 }
 
 /* Carta */
 .card {
     border: 1px solid rgba(0,0,0,.125);
     padding: 2rem;
+    margin-bottom: 1rem;
 }
 
 /* Formulario de registro */
@@ -84,4 +89,16 @@ h1 {
 textarea {
     resize: vertical;
     overflow-x: hidden;
+}
+
+/* Tabla */
+.table {
+    width: 100%;
+    margin-top: 2rem;
+    font-size: 1.4rem;
+}
+
+.table-row {
+    display: flex;
+    justify-content: space-between;
 }
