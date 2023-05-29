@@ -17,36 +17,40 @@
             <div class="content">
                 <div class="card">
                     <!-- Aquí el formulario para crear nuevos md -->
-                    <form class="form"> 
-                        <input class="form-input" type="text" name="title" id="title" placeholder="Titulo">
-                        <textarea  class="form-input form-input__area" name="content" placeholder="Contenido" id="content"></textarea>
+                    <form id="add-file-form" class="form">
+                        <label for="file-title">Título del archivo:</label> 
+                        <input id="file-title" class="form-input" type="text" name="title" placeholder="Titulo">
+
+                        <label for="file-content">Contenido del archivo:</label>
+                        <textarea  id="file-content" class="form-input form-input__area" name="content" placeholder="Contenido"></textarea>
+                        <button class="button" id="bCrear" type="sub">Crear archivo</button>
                     </form>
-                    
-                    <button class="button" id="bCrear" onclick="">Nuevo archivo</button>
-        
                 </div> <!-- /card -->
-                <div class="card">
-                    <!-- Aquí la lista de archivos creados -->
-                    <table class="table">
-                        <thead class="table-head">
-                            <tr class="table-row">
-                                <td>Titulo</td>
-                                <td>Acciones</td>
-                            </tr>
-                        </thead>
-                        <tbody id="listMd" class="table-body">
-                            
-                        </tbody>
-                    </table>
-                </div> <!-- /card -->
-            </div>
-            <div class="vista">
-                <div id="result">
-                    <!-- Aquí la vista de md a html -->
-                </div>
+                  <!-- Lista de archivos Markdown -->
+                <ul id="file-list"></ul>
+
+                <!-- Sección para mostrar el contenido del archivo seleccionado -->
+                <section id="output">
+                    <div id="output-title"></div>
+                    <div id="output-content"></div>
+                </section>
             </div>
         </div>
         <script src="js/app.js"></script>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+    <script src="./js/script.js"></script>
+    <script>
+      $(document).ready(function() {
+        loadFileList();
+  
+        // Enviar el formulario para agregar un nuevo archivo
+        $('#add-file-form').on('submit', function(event) {
+          event.preventDefault();
+          addFile();
+        });
+      });
+    </script>
 </body>
 </html>
