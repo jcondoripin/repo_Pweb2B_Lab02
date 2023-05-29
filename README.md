@@ -298,12 +298,15 @@
 ## EJERCICIOS PROPUESTOS
 -   En grupos de 3 a 5 personas implemente una aplicación web que navegue sobre archivos Markdown y permita:
     1. Listas los archivos Markdown disponibles
+	
 	-function loadFileList()
 	 	
     2. Ver el contenido de un archivo Markdown traducido a HTML
+	
 	-function loadMarkdownContent(filename)
 	
     3. Crear nuevos archivos MarkDown y almacenarlos en el servidor
+	
 	-function addFile() 
 	-anexo:https://github.com/jcondoripin/repo_Pweb2B_Lab02/blob/main/public/js/script.js
 
