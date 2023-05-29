@@ -1,14 +1,69 @@
-const path = require('path');
 const express = require('express');
+const bodyParser = require('body-parser');
+const fs = require('fs');
+
 const app = express();
+const PORT = 3000;
 
-// Middlewares
-app.use(express.json()) // Comunicacion con json
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('public'));
 
-// Direccion a directorio public
-app.use(express.static(path.join(__dirname, 'public')));
+// Ruta para agregar un nuevo archivo Markdown
+app.post('/markdown/add', (req, res) => {
+  const { title, content } = req.body;
+  const filename = title.replace(/\s/g, '-').toLowerCase() + '.md';
 
-// Aquí las rutas (listar, ver, crear, eliminar)
+  fs.writeFile(filename, content, (error) => {
+    if (error) {
+      console.log('Error al agregar el archivo Markdown:', error);
+      res.sendStatus(500);
+    } else {
+      console.log('Archivo Markdown agregado:', filename);
+      res.sendStatus(200);
+    }
+  });
+});
 
+// Ruta para cargar la lista de archivos Markdown
+app.get('/markdown/list', (req, res) => {
+  fs.readdir('.', (error, files) => {
+    if (error) {
+      console.log('Error al leer el directorio:', error);
+      res.sendStatus(500);
+    } else {
+      const markdownFiles = files.filter((file) => file.endsWith('.md'));
+      const fileList = markdownFiles.map((file) => {
+        return {
+          title: file.replace('.md', ''),
+          filename: file
+        };
+      });
 
-app.listen(3000, () => {console.log("Listen on port 3000");});
+      res.json(fileList);
+    }
+  });
+});
+
+// Ruta para obtener el contenido de un archivo Markdown
+app.get('/markdown/file/:filename', (req, res) => {
+  const { filename } = req.params;
+
+  fs.readFile(filename, 'utf8', (error, data) => {
+    if (error) {
+      console.log('Error al leer el archivo:', error);
+      res.sendStatus(500);
+    } else {
+      res.send(data);
+    }
+  });
+});
+
+// Ruta principal para cargar el archivo index.html
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+
+// Iniciar el servidor
+app.listen(PORT, () => {
+  console.log(`Servidor iniciado en el puerto ${PORT}`);
+});
