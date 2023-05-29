@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const path = require('path');
 
 const app = express();
 const PORT = 3000;
@@ -13,7 +14,7 @@ app.post('/markdown/add', (req, res) => {
   const { title, content } = req.body;
   const filename = title.replace(/\s/g, '-').toLowerCase() + '.md';
 
-  fs.writeFile(filename, content, (error) => {
+  fs.writeFile(path.resolve(__dirname, `private/${filename}`), content, (error) => {
     if (error) {
       console.log('Error al agregar el archivo Markdown:', error);
       res.sendStatus(500);
@@ -26,7 +27,7 @@ app.post('/markdown/add', (req, res) => {
 
 // Ruta para cargar la lista de archivos Markdown
 app.get('/markdown/list', (req, res) => {
-  fs.readdir('.', (error, files) => {
+  fs.readdir('./private', (error, files) => {
     if (error) {
       console.log('Error al leer el directorio:', error);
       res.sendStatus(500);
@@ -48,7 +49,7 @@ app.get('/markdown/list', (req, res) => {
 app.get('/markdown/file/:filename', (req, res) => {
   const { filename } = req.params;
 
-  fs.readFile(filename, 'utf8', (error, data) => {
+  fs.readFile(path.resolve(__dirname, `private/${filename}`), 'utf8', (error, data) => {
     if (error) {
       console.log('Error al leer el archivo:', error);
       res.sendStatus(500);
@@ -60,7 +61,7 @@ app.get('/markdown/file/:filename', (req, res) => {
 
 // Ruta principal para cargar el archivo index.html
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 // Iniciar el servidor

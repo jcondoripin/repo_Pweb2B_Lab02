@@ -17,12 +17,6 @@ body {
     line-height: 1.5;
 }
 
-h1 {
-    font-size: 2rem;
-    margin: 0;
-    padding: 1.4rem;
-}
-
 .container {
     margin: 0 auto;
 }
@@ -31,6 +25,12 @@ h1 {
     background-color: #343a40;
     color: whitesmoke;
     text-align: center;
+}
+
+.header-text {
+    font-size: 2rem;
+    margin: 0;
+    padding: 1.4rem;
 }
 
 .body {

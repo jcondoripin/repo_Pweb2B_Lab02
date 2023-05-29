@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>Markdown to HTML with AJAX</h1>
+            <h1 class="header-text">Markdown to HTML with AJAX</h1>
         </header>
         <div class="body">
             <div class="content">
@@ -19,21 +19,23 @@
                     <!-- Aquí el formulario para crear nuevos md -->
                     <form id="add-file-form" class="form">
                         <label for="file-title">Título del archivo:</label> 
-                        <input id="file-title" class="form-input" type="text" name="title" placeholder="Titulo">
+                        <input id="file-title" class="form-input" type="text" name="title" placeholder="Titulo" required>
 
                         <label for="file-content">Contenido del archivo:</label>
-                        <textarea  id="file-content" class="form-input form-input__area" name="content" placeholder="Contenido"></textarea>
-                        <button class="button" id="bCrear" type="sub">Crear archivo</button>
+                        <textarea  id="file-content" class="form-input form-input__area" name="content" placeholder="Contenido" required></textarea>
+                        <button class="button" id="bCrear" type="submit">Crear archivo</button>
                     </form>
                 </div> <!-- /card -->
-                  <!-- Lista de archivos Markdown -->
-                <ul id="file-list"></ul>
-
-                <!-- Sección para mostrar el contenido del archivo seleccionado -->
-                <section id="output">
-                    <div id="output-title"></div>
-                    <div id="output-content"></div>
-                </section>
+                <div class="card">
+                    <!-- Lista de archivos Markdown -->
+                    <ul id="file-list"></ul>
+  
+                    <!-- Sección para mostrar el contenido del archivo seleccionado -->
+                    <section id="output">
+                        <div id="output-title"></div>
+                        <div id="output-content"></div>
+                    </section>
+                </div>
             </div>
         </div>
         <script src="js/app.js"></script>
