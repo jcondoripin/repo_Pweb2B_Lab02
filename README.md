@@ -210,8 +210,13 @@ Es una buena practica establecer el "Content Type" apropiado en la respuesta HTT
 El archivo "poema.txt" debería estar ubicado dentro de una carpeta llamada "priv" en el mismo directorio que el archivo JavaScript principal.
 
 - ¿Entiende la expresión regular en el código y se da cuenta de para qué es útil?
+
+Esta expresión regular se utiliza para buscar todas las apariciones de la secuencia de escape de nueva línea (\n) en el contenido del archivo "poema.txt" y reemplazarlas por la etiqueta HTML "br", que representa un salto de línea en el contexto del lenguaje HTML.
+
 - Note que la respuesta del servidor está en formato JSON, ¿Habrá alguna forma de verla directamente?
 Se puede ver los archivos JSON desde el inspector del navegador.
+
+Al realizar la solicitud POST y recibir la respuesta JSON, se utiliza console.log(data) para mostrar directamente la respuesta en formato JSON en la consola del navegador. De esta manera, se puede inspeccionar la estructura y los datos de la respuesta directamente en la consola.
 
 #
 
