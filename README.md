@@ -103,222 +103,97 @@
 
 </details>
 
-## CONTENIDO DE LA GUÍA
-
-### MARCO CONCEPTUAL
-
--   https://www.w3schools.com/nodejs/nodejs_intro.asp
--   https://nodejs.org/en/docs/guides/getting-started-guide/
--   https://nodejs.dev/learn
--   https://www.w3schools.com/js/js_api_fetch.asp
--   https://expressjs.com/es/
--   https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch
--   https://developer.mozilla.org/es/docs/Learn/Server-side/Express_Nodejs/Introduction
-
--   Instale NodeJS
--   Cree un nuevo proyecto NodeJS.
--   Cree un archivo index.js
-    ```sh
-    const http = require('http');
-    const server = http.createServer((request, response) => {
-        console.log(request.url);
-        response.end("Hola mundo");
-    });
-    server.listen(3000);
-    console.log("Escuchando en: http://localhost:3000")
-    ```
--   Luego lance el servidor con:    
-    ```sh
-    node index.js
-    ```
--   Note que console imprime en la salida estándar y el cliente sólo recibe el texto “Hola Mundo”. http://127.0.0.1:3000/
-
--   El siguiente código modifica algunas líneas para usar un framework llamado express y  devolver un archivo index.html
--   Para usar este código debe instalar express con npm: 
-    ```sh
-    $ npm install express    
-    ```
-    ```sh
-    const path = require('path');
-    const express = require('express');
-    const app = express();
-
-    app.listen(3000, () => {
-        console.log("Escuchando en: http://localhost:3000")
-
-    });
-
-    app.get('/', (request, response) => {
-        response.sendFile(path.resolve(__dirname, 'index.html'));
-    });
-    ```
--   Deberá crear un archivo index.html en el directorio de su proyecto.
--   Note que el servidor espera recibir una petición de tipo GET y el URL no contiene el nombre del archivo.
-
-## EJERCICIO RESUELTO POR EL DOCENTE
-
--   Cree una aplicación web que ejecute javascript en el cliente (dentro de la carpeta pub) y nodejs en el servidor.
-    ```sh
-    const path = require('path');
-    const express = require('express');
-    const app = express();
-    app.use(express.static('pub'));
-    app.listen(3000, () => {
-        console.log("Escuchando en: http://localhost:3000")
-
-    });
-
-    app.get('/', (request, response) => {
-        response.sendFile(path.resolve(__dirname, 'index.html'));
-    });
-    ```
--   Cree una aplicación web que realice una petición ajax en el lado del cliente y responda usando nodejs en el lado del servidor.
--   En el lado del servidor :
-    ```sh
-    const fs = require('fs')
-    const path = require('path')
-    const express = require('express')
-    const app = express()
-    app.use(express.static('pub'))
-
-    app.listen(3000, () => {
-        console.log("Escuchando en: http://localhost:3000")
-    });
-
-    app.get('/', (request, response) => {
-        response.sendFile(path.resolve(__dirname, 'index.html'))
-    })
-
-    app.get('/recitar', (request, response) => {
-        fs.readFile(path.resolve(__dirname, 'priv/poema.txt'), 'utf8',
-            (err, data) => {
-                if (err) {
-                    console.error(err)
-                    response.status(500).json({
-                        error: 'message'
-                    })
-                    return
-                }
-                response.json({
-                    text: data.replace(/\n/g, '<br>')
-                })
-            })
-        //
-    })
-    ```
-
--   En el lado del cliente:
-    ```sh
-    function recitar() {
-        const url = 'http://localhost:3000/recitar'
-        fetch(url).then(
-            response => response.json()
-        ).then(
-            data => {
-                document.querySelector("#poema").innerHTML = data.text
-            }
-        )
-    }
-    ```
--   Si tiene errores lea: https://medium.com/zero-equals-false/using-cors-in-express-cac7e29b005b
-
--   Cree una aplicación que haga peticiones AJAX usando POST a un servidor NodeJS
--   En el lado del servidor
-    ```sh
-    const fs = require('fs')
-    const path = require('path')
-    const express = require('express')
-    const bp = require('body-parser')
-    const MarkdownIt = require('markdown-it'),
-        md = new MarkdownIt();
-    const app = express()
-
-    app.use(express.static('pub'))
-    app.use(bp.json())
-    app.use(bp.urlencoded({
-        extended: true
-    }))
-
-    app.listen(3000, () => {
-        console.log("Escuchando en: http://localhost:3000")
-    })
-
-    app.get('/', (request, response) => {
-        response.sendFile(path.resolve(__dirname, 'index.html'))
-    })
-
-    app.post('/', (request, response) => {
-        console.log(request.body)
-        let markDownText = request.body.text
-        console.log(markDownText)
-        let htmlText = md.render(markDownText)
-        response.setHeader('Content-Type', 'application/json')
-        response.end(JSON.stringify({
-            text: htmlText
-        }))
-    })
-    ```
--   Note que tanto el tanto GET como POST comparten el mismo URL.
-
--   En el lado del cliente
-    ```sh
-    function recitar(markupText) {
-	const url = 'http://localhost:3000/'
-	const data = {
-		text: markupText
-	}
-    console.log(data)
-	const request = {
-		method: 'POST', // Podría ser GET
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(data),
-	}
-	http = fetch(url, request)
-	http.then(
-		response => response.json()
-	).then(
-		data => {
-			document.querySelector("#htmlCode").innerHTML = data.text
-		}
-        )
-    }
-    document.addEventListener('DOMContentLoaded', function () {
-        const text = document.querySelector('#markupText')
-        document.querySelector('#markupForm').onsubmit = () => {
-            recitar(text.value)
-            return false;
-        }
-    })
-    ```
-
-#
-
-## EJERCICIOS PROPUESTOS
+## SOLUCION Y RESULTADOS
 -   En grupos de 3 a 5 personas implemente una aplicación web que navegue sobre archivos Markdown y permita:
     1. Listas los archivos Markdown disponibles
-	
-	-function loadFileList()
+	```
+    function loadFileList() {
+        $.ajax({
+        url: '/markdown/list',
+        type: 'GET',
+        success: function(data) {
+            var fileList = $('#file-list');
+    
+            // Vaciar la lista antes de agregar los nuevos elementos
+            fileList.empty();
+    
+            // Agregar los títulos de los archivos como elementos de la lista
+            data.forEach(function(file) {
+            var listItem = $('<li></li>').text(file.title);
+    
+            // Agregar evento clic para cargar el contenido del archivo
+            listItem.on('click', function() {
+                loadMarkdownContent(file.filename);
+            });
+    
+            fileList.append(listItem);
+            });
+        },
+        error: function(error) {
+            console.log('Error al cargar la lista de archivos Markdown:', error);
+        }
+        });
+    }
+    ```
 	 	
     2. Ver el contenido de un archivo Markdown traducido a HTML
 	
-	-function loadMarkdownContent(filename)
+	```
+    function loadMarkdownContent(filename) {
+        $.ajax({
+        url: '/markdown/file/' + filename,
+        type: 'GET',
+        success: function(data) {
+            var converter = new showdown.Converter();
+            var htmlContent = converter.makeHtml(data);
+    
+            $('#output-title').text(filename);
+            $('#output-content').html(htmlContent);
+        },
+        error: function
+        (error) {
+            console.log('Error al cargar el contenido del archivo Markdown:', error);
+        }
+        });
+    }
+    ```
 	
     3. Crear nuevos archivos MarkDown y almacenarlos en el servidor
 	
-	function addFile() 
+	```
+    function addFile() {
+        var fileTitle = $('#file-title').val();
+        var fileContent = $('#file-content').val();
+    
+        $.ajax({
+        url: '/markdown/add',
+        type: 'POST',
+        data: {
+            title: fileTitle,
+            content: fileContent
+        },
+        success: function() {
+            loadFileList();
+            $('#file-title').val('');
+            $('#file-content').val('');
+        },
+        error: function(error) {
+            console.log('Error al agregar el archivo Markdown:', error);
+        }
+        });
+    }
+    ``` 
 	
 	Anexo:https://github.com/jcondoripin/repo_Pweb2B_Lab02/blob/main/public/js/script.js
 
--   La comunicación entre el cliente y el servidor tiene que ser usando JSON sólamente.
-El cliente debe usar AJAX para sus peticiones
-El servidor debe usar NodeJS
-Su aplicación debe ser de página única, es decir que sólo habrá un archivo index.html y nada más.
+La comunicación entre el cliente y el servidor us JSON sólamente.
+El cliente usa AJAX para sus peticiones.
+El servidor usar NodeJS.
+La aplicación es una página única.
 	
-	https://github.com/jcondoripin/repo_Pweb2B_Lab02/blob/main/public/index.html
+Anexo: https://github.com/jcondoripin/repo_Pweb2B_Lab02/blob/main/public/index.html
 
--   Si los enlaces proporcionado en esta guía no le son suficientes, puede revisar códigos en Internet que le ayuden con cosas como ejemplos: listar un directorio en NodeJS; pero deberá incluir los enlaces correspondientes en sus archivos como comentarios y sólo podrá usar código de stackoverflow, incluir código de cualquier otra fuente está prohibido y se considerará actitud deshonesta.
+
 
 #
 
@@ -340,6 +215,7 @@ Su aplicación debe ser de página única, es decir que sólo habrá un archivo 
 -   https://expressjs.com/es/
 -   https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch
 -   https://developer.mozilla.org/es/docs/Learn/Server-side/Express_Nodejs/Introduction
+-   https://github.com/github/gitignore/blob/main/Node.gitignore
 
 #
 
