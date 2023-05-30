@@ -186,7 +186,9 @@
 	
 	Anexo:https://github.com/jcondoripin/repo_Pweb2B_Lab02/blob/main/public/js/script.js
 
-La comunicación entre el cliente y el servidor us JSON sólamente.
+    <img src="./img_index.PNG" style="width:50%; height:auto"/>
+
+La comunicación entre el cliente y el servidor es JSON sólamente.
 El cliente usa AJAX para sus peticiones.
 El servidor usar NodeJS.
 La aplicación es una página única.
@@ -202,6 +204,7 @@ Anexo: https://github.com/jcondoripin/repo_Pweb2B_Lab02/blob/main/public/index.h
 - En los ejercicios. ¿En qué lugar debería estar el archivo poema.txt?
 - ¿Entiende la expresión regular en el código y se da cuenta de para qué es útil?
 - Note que la respuesta del servidor está en formato JSON, ¿Habrá alguna forma de verla directamente?
+Se puede ver los archivos JSON desde el inspector del navegador.
 
 #
 
