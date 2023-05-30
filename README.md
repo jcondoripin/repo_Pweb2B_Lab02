@@ -201,7 +201,13 @@ Anexo: https://github.com/jcondoripin/repo_Pweb2B_Lab02/blob/main/public/index.h
 
 ## CUESTIONARIO
 - En el Ejemplo "Hola Mundo" con NodeJS. ¿Qué pasó con la línea: "Content type ….."?
+
+Se omitio la linea Content Type, esto podria llevar a probemas de interpretación del contenido y algunas incompatibilidades en ciertos clientes. 
+Es una buena practica establecer el "Content Type" apropiado en la respuesta HTTP para asegurarse de que el cliente interprete correctamente el contenido.
+
 - En los ejercicios. ¿En qué lugar debería estar el archivo poema.txt?
+
+
 - ¿Entiende la expresión regular en el código y se da cuenta de para qué es útil?
 - Note que la respuesta del servidor está en formato JSON, ¿Habrá alguna forma de verla directamente?
 Se puede ver los archivos JSON desde el inspector del navegador.
